@@ -44,7 +44,7 @@ export default function LoginSignup(){
 
             
             <div className="absolute z-[-1] w-fit h-[100vh] before:bg-overlay-opacity before:absolute before:top-0 before:bottom-0 before:left-0 before:right-0">
-                <video autoPlay source src ={ "./assets/vids/vid.mp4"} loop className="w-auto h-full" style={{'objectFit': "cover"}}>
+                <video autoPlay source src ={ "./assets/vids/vid.mp4"} loop className="w-auto h-full" style={{"objectFit": "cover"}}>
                     {/* <source src = "./assets/vids/test.mp4" ></source> */}
                 </video>
             </div>
