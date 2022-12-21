@@ -140,7 +140,7 @@ export default function index() {
 
     {/* <!-- FOOTER --> */}
     <Footer/>
-    <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js" async></script>
 
     </>
   )
