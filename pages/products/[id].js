@@ -21,9 +21,9 @@ export const getStaticPaths = async () => {
         fallback: false
     }
 }
- 
-export const getStaticProps = async (context) => {
-    const id = context.params.id
+
+export async function getProduct(id){
+
     const res = await fetch(`http://localhost:3000/api/fetchProduct/${id}`, {
         method: "GET",
         headers: {
@@ -31,6 +31,20 @@ export const getStaticProps = async (context) => {
         },
       })
     const data = await res.json()
+    return data
+}
+ 
+export const getStaticProps = async (context) => {
+    const id = context.params.id
+    // const res = await fetch(`http://localhost:3000/api/fetchProduct/${id}`, {
+    //     method: "GET",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //   })
+    // const data = await res.json()
+
+    const data = await getProduct(id)
 
     return {
         props: {product: data.data}
