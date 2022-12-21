@@ -1,26 +1,33 @@
 
-// import { useEffect } from "react";
-// import ProductViewer from "../ProductViewer";
 import clientPromise from "../../lib/mongodb";
 
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Image from "next/image"
 
-import { useState, useEffect, use } from "react"
+import { useState, useEffect } from "react"
 import {useRouter} from "next/router"
 export const getStaticPaths = async () => {
-    const res = await fetch("http://localhost:3000/api/fetchProducts", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+    // const res = await fetch("http://localhost:3000/api/fetchProducts", {
+    //     method: "GET",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //   });
 
-    const data = await res.json()
-    const paths = data.data.map(product => {
+    // const data = await res.json()
+
+    const client = await clientPromise;
+
+    const db = client.db("bcomm");
+
+    const products = await db.collection("products").find({}).toArray();
+
+    console.log((products[0]._id.toString()))
+
+    const paths = products.map(product => {
         return {
-            params:{id: product._id}  
+            params:{id: product._id.toString()}  
         }
     })
 
