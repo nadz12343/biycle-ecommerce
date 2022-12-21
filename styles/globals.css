@@ -1,4 +1,4 @@
-html,
+/* html,
 body {
   padding: 0;
   margin: 0;
@@ -23,4 +23,54 @@ a {
     color: white;
     background: black;
   }
+} */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    h1{
+       @apply font-sans text-h1 font-black text-white
+    }
+
+    h2{
+        @apply font-sans text-h2 font-bold text-white
+     }
+
+    h3{
+        @apply font-sans text-h3 font-bold text-white
+    }
+
+    h4 {
+        @apply font-sans text-h4 font-bold 
+    }
+
+    h5{
+        @apply font-sans text-h5 font-bold text-white
+    }
+
+    h6, .h6{
+        @apply font-sans text-h6 font-bold leading-relaxed
+    }
+
+    p, .p{
+        @apply font-sans text-p text-text-color
+    }
+/* 
+    nav {
+        @apply font-sans text-h5
+    } */
+}
+
+.enableBlur>*{
+  filter: blur(2.5px)
+}
+
+.disableBlur{
+  filter: blur(0)
+}
+
+body {
+  background-color: #FBF7F7;
 }
