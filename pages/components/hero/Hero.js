@@ -50,7 +50,7 @@ export default function Hero(){
     const frames = data.map((e, index) => {
         return <HeroData imgPath = {e.imgPath} header = {e.header} shortMsg={e.shortMsg} buttonMsg = {e.buttonMsg} frameIndex = {index} key = {index} />
     })
-    console.log(frames)
+ //   console.log(frames)
 
 
 
@@ -86,7 +86,7 @@ export default function Hero(){
 
     function switchFrame(){
         (currentFrameIndex+=1)
-        console.log(currentFrameIndex)
+     //   console.log(currentFrameIndex)
         if (currentFrameIndex > frames.length-1) {
             // setCurrentFrameIndex(0)
             currentFrameIndex = 0

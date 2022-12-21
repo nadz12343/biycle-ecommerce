@@ -24,7 +24,7 @@ export default function Account({id}) {
 
 export async function getServerSideProps(context) {
 
-    console.log(context.params)
+    // console.log(context.)
 
     return {
       props: {

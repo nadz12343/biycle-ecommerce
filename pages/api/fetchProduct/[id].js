@@ -11,7 +11,6 @@ export default async function handler(req, res) {
 
       suffix = files.filter(f => typeof parseInt(f[0]) === "number" && parseInt(f[0]))
 
-      // console.log(`in S ${suffix}`)
 
    });
    return suffix
@@ -39,11 +38,9 @@ export default async function handler(req, res) {
 
 
         const relatedProducts = await db.collection("products").aggregate([ { $sample: { size: 3 } } ]).toArray()
-        // console.log(relatedProducts)
 
         let imgs = fs.readdirSync(`public/${product.imgPath}`)
         suffix = imgs.filter(f => typeof parseInt(f[0]) === "number" && parseInt(f[0]))
-        // console.log(`suffix is: ${suffix}`)
 
         //modPro is the products, suffix of the product and the related products, all in one JS objec
         let modProd = {...product, imgSuffix: suffix, relatedProducts}

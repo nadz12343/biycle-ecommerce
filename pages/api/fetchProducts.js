@@ -5,7 +5,6 @@ export default async function handler(req, res) {
   const client = await clientPromise;
 
   const db = client.db("bcomm");
-    // console.log("hey")
   switch (req.method) {
     
     case "GET":
