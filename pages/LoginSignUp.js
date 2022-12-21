@@ -55,7 +55,7 @@ export default function LoginSignup(){
                 {/* {isLoggedIn ? <Account firstname="H@J"/> : <Login setIsLoggedIn={setIsLoggedIn}/>} */}
 
                 {!pickedSignUp ? 
-                    <p className="mt-32">Don't have an account with us? <button className="block px-16 mx-auto mt-16 font-extrabold border-2 rounded-full text-h3s md:text-h5 border-primary" onClick={() => setPickedSignUp(true)}>Sign-Up!</button></p> :
+                    <p className="mt-32">Don&apos;t have an account with us? <button className="block px-16 mx-auto mt-16 font-extrabold border-2 rounded-full text-h3s md:text-h5 border-primary" onClick={() => setPickedSignUp(true)}>Sign-Up!</button></p> :
                     <p className="mt-32">Already have an account with us? <button className="block px-16 mx-auto mt-16 font-extrabold border-2 rounded-full text-h3s md:text-h5 border-primary" onClick={() => setPickedSignUp(false)}>Login!</button></p>
                 }
             </div>
