@@ -56,13 +56,7 @@ export const getStaticProps = async (context) => {
 
     console.log(product)
 
-    // const res = await fetch(`http://localhost:3000/api/fetchProduct/${id}`, {
-    //     method: "GET",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   })
-    // const data = await res.json()
+ 
 
       console.log(suffix)
     return {
