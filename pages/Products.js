@@ -9,9 +9,13 @@ import ProductCard from './components/ProductCard'
 
 import RefineSearch from "./components/RefineSearch"
 import { useEffect } from 'react'
-export default function index({products}) {
 
-  const mappedProductData = products.data.map((product, index) => {
+import clientPromise from "../lib/mongodb";
+
+export default function index({newProducts}) {
+
+  // console.log(products)
+  const mappedProductData = newProducts.map((product, index) => {
 
     return (
      <ProductCard 
@@ -61,16 +65,30 @@ export default function index({products}) {
 }
 
 export async function getServerSideProps(context) {
-  let res = await fetch("http://localhost:3000/api/fetchProducts", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+//   let res = await fetch("http://localhost:3000/api/fetchProducts", {
+//     method: "GET",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
 
- let products = await res.json();
+//  let products = await res.json();
 //  console.log(products)
+
+const client = await clientPromise;
+
+  const db = client.db("bcomm");
+  const products = await db.collection("products").find({}).toArray();
+
+  const newProducts = products.map(product => {
+    return {
+      ...product,
+      _id: product._id.toString()
+    }
+  })
+
+  // console.log(`length of new newProducts is ${newProducts.length}`)
   return {
-    props: { products },
+    props: { newProducts },
   };
 }

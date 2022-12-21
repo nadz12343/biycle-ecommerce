@@ -22,7 +22,7 @@ export default function LoginSignup(){
     useEffect(() => {
 
         const doesExist = window.localStorage.getItem("isLoggedIn")
-        console.log(`does exist: ${doesExist}`)
+        // console.log(`does exist: ${doesExist}`)
 
         if (doesExist === "true") {
             router.push({

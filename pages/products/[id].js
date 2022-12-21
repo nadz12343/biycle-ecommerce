@@ -23,7 +23,7 @@ export const getStaticPaths = async () => {
 
     const products = await db.collection("products").find({}).toArray();
 
-    console.log((products[0]._id.toString()))
+    // console.log((products[0]._id.toString()))
 
     const paths = products.map(product => {
         return {
@@ -41,7 +41,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
     const id = context.params.id
 
-    console.log(context)
+    // console.log(context)
 
     const {ObjectId} = require('mongodb'); // or ObjectID 
     const fs = require('fs')
@@ -61,11 +61,11 @@ export const getStaticProps = async (context) => {
     let imgs = fs.readdirSync(`public/${product.imgPath}`)
     suffix = imgs.filter(f => typeof parseInt(f[0]) === "number" && parseInt(f[0]))
 
-    console.log(product)
+    // console.log(product)
 
  
 
-      console.log(suffix)
+    //   console.log(suffix)
     return {
         props: {product: {
             _id: context.params.id,
@@ -85,7 +85,7 @@ export const getStaticProps = async (context) => {
 } 
 
 export default function W({product}){
-    console.log(product)
+    // console.log(product)
     return (
         <ProductViewer 
         id = {product._id}
