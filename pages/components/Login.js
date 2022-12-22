@@ -39,9 +39,9 @@ export default function Login({setUserDetails}) {
 
         fetch("http://localhost:3000/api/login", {
             method: "POST",
-            headers: {
-                'Set-Cookie': "loggedIn=true"
-            },
+            // headers: {
+            //     'Set-Cookie': "loggedIn=true"
+            // },
             body: JSON.stringify(loginData)
         },
         ).then(res => {

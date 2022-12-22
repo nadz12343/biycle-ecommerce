@@ -9,7 +9,7 @@ export default async function login(req, res){
 
     if (req.method == "POST") {
 
-        console.log(req.headers['set-cookie'][0])
+        // console.log(req.headers['set-cookie'][0])
 
         const {email, password} = JSON.parse(req.body)
         console.log(`the email is ${email}, the password is: ${password}`)
