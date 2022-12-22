@@ -13,7 +13,7 @@ export default function Account({id, email, firstname, surname}) {
     }
 
     function submitEdit(){
-        fetch("http://localhost:3000/api/updateUser", {
+        fetch("/api/updateUser", {
           method: "PUT",
           body: JSON.stringify(newDetails)  
         }).then(res => res.json()).then(d => {
