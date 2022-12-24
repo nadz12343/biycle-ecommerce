@@ -58,7 +58,7 @@ export default function Account({id, email, firstname, surname}) {
     return (
 
         <>
-          <Header/>
+          <Header dirLevel={".."}/>
           <div className="flex flex-col items-center justify-center h-full" >
           
               <h1 className = "mt-64 text-h1s sm:text-h1 text-text-black ">Welcome back, {newDetails.firstname} {newDetails.surname}</h1>

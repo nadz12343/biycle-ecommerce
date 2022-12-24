@@ -47,18 +47,18 @@ export default function Login({setUserDetails}) {
         ).then(res => {
             if (res.status === 200) {
                 document.cookie = "isLoggedIn=true"
-                console.log(document.cookie)
+                // console.log(document.cookie)
                 return res.json()
             }
             else {
-                console.log(document.cookie)
+                // console.log(document.cookie)
                 return null
             }
         }).then(data => {
             if (data !== null) {
-                console.log(data)
+                // console.log(data)
                 window.localStorage.setItem('isLoggedIn', true)
-                console.log(window.localStorage)
+                // console.log(window.localStorage)
                 window.localStorage.setItem('id', data.user[0]._id)
                 window.localStorage.setItem('email', data.user[0].email)
                 window.localStorage.setItem('firstname', data.user[0].firstname)
@@ -81,21 +81,9 @@ export default function Login({setUserDetails}) {
         })
     }
 
-    // useEffect(() => {
 
-    //     // if (document.cookie)
-    //     const doesExist = window.localStorage.getItem("isLoggedIn")
-    //     console.log(`does exist: ${doesExist}`)
-    //     if (doesExist === null || doesExist === "false") setIsLoggedIn(false) 
-    //     else setIsLoggedIn(true)
-
-
-        
-    // },[])
 
     return (
-        // loggedOutUI
-        // isLoggedIn === true ? <Account/> : loggedOutUI  
         loggedOutUI
     )
 }

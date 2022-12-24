@@ -15,7 +15,7 @@ export default function index() {
   return (
     <>
 
-  <Header/>
+  <Header dirLevel="."/>
     <Hero/>
     <Ads/>
 

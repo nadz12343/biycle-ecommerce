@@ -3,7 +3,8 @@ import Link from "next/link"
 import { useState } from "react"
 
 import Basket from "./Basket"
-export default function Header(){
+import Search from "./Search"
+export default function Header({dirLevel}){
 
     const [showMobileMenu, setShowMobileMenu] = useState(false)
 
@@ -44,22 +45,19 @@ export default function Header(){
     
             </section>
 
+            <section className="flex w-[50%] mx-auto">
+            <Search dirLevel = ".."/>
+
+            </section>
+
             <section className="flex">
-                    <img className = 'w-8 h-8 mx-16 md:w-32 md:h-32' src="./assets/icons/search.png" alt=""/>
                     <Link href = "/LoginSignUp">
-                        <img className = 'w-8 h-8 mx-16 md:w-32 md:h-32' src="./assets/icons/account.png" alt=""/>
+                        <img className = 'w-8 h-8 mx-16 md:w-32 md:h-32' src={`${dirLevel}/assets/icons/account.png`} alt=""/>
                     </Link>
-                        <img className = 'w-8 h-8 mx-16 md:w-32 md:h-32' src="./assets/icons/basket.png" alt="" onClick={() => setShowBasket(showBasket => !showBasket)}/>    
+                        <img className = 'w-8 h-8 mx-16 md:w-32 md:h-32' src={`${dirLevel}/assets/icons/basket.png`} alt="" onClick={() => setShowBasket(showBasket => !showBasket)}/>    
             </section>
         </nav>
 
-
-        {/* <nav className="flex flex-col md:hidden">
-            <button className="self-start ml-auto" onClick={() => setShowMobileMenu(showMobileMenu => !showMobileMenu)}>
-                Hover Menu
-            </button>
-            {showMobileMenu ? mobileMenu : ""}
-        </nav> */}
         {showMobileMenu ? mobileMenuOn: mobileMenuOff}
     </header>
    

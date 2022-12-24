@@ -40,7 +40,7 @@ export default function LoginSignup(){
     },[])
     return (
         <>
-            <Header/>
+            <Header dirLevel= ".."/>
 
             
             <div className="absolute z-[-1] w-fit h-[100vh] before:bg-overlay-opacity before:absolute before:top-0 before:bottom-0 before:left-0 before:right-0">

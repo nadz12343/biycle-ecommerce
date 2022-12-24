@@ -8,22 +8,13 @@ import Image from "next/image"
 import { useState, useEffect } from "react"
 import {useRouter} from "next/router"
 export const getStaticPaths = async () => {
-    // const res = await fetch("http://localhost:3000/api/fetchProducts", {
-    //     method: "GET",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   });
 
-    // const data = await res.json()
 
     const client = await clientPromise;
 
     const db = client.db("bcomm");
 
     const products = await db.collection("products").find({}).toArray();
-
-    // console.log((products[0]._id.toString()))
 
     const paths = products.map(product => {
         return {
@@ -41,7 +32,6 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
     const id = context.params.id
 
-    // console.log(context)
 
     const {ObjectId} = require('mongodb'); // or ObjectID 
     const fs = require('fs')
@@ -49,9 +39,6 @@ export const getStaticProps = async (context) => {
     const client = await clientPromise;
     
     const db = client.db("bcomm");
-
-    // const splitted = req.url.split("/");
-    // const id = splitted[splitted.length-1]
     
     let o_id = new ObjectId(id);   // id as a string is passed
 
@@ -61,11 +48,6 @@ export const getStaticProps = async (context) => {
     let imgs = fs.readdirSync(`public/${product.imgPath}`)
     suffix = imgs.filter(f => typeof parseInt(f[0]) === "number" && parseInt(f[0]))
 
-    // console.log(product)
-
- 
-
-    //   console.log(suffix)
     return {
         props: {product: {
             _id: context.params.id,
@@ -85,7 +67,7 @@ export const getStaticProps = async (context) => {
 } 
 
 export default function W({product}){
-    // console.log(product)
+
     return (
         <ProductViewer 
         id = {product._id}
@@ -106,9 +88,6 @@ export default function W({product}){
 
 
  function ProductViewer({id, name, category, type, brand, price, rating, imgpath, bestseller, desc, imgsuffixs, relatedproducts}){
- 
-//    const [mainImg, setMainImg] = useState(<img src={`/${imgpath}/${imgsuffixs[0]}`} style={{backgroundSize: "cover", width: "830px", maxHeight: "601px"}}/>)
-// console.log(typeof (imgsuffixs[0]))
 
     const [mainImg, setMainImg] = useState(<Image src={`/${imgpath}/${imgsuffixs[0]}`} width= {750} height = {750} className="rounded-md"/>)
 
@@ -116,15 +95,12 @@ export default function W({product}){
 
 
     function switchMainImg(newImgPath){
-        // setMainImg(<img src={`${newImgPath}`} style={{backgroundSize: "scale-down", aspectRatio: ""}}/>)
-        // setMainImg(<img src={`${newImgPath}`} style={{backgroundSize: "cover", width: "830px", maxHeight: "601px"}}/>)
+
         setMainImg(<Image src={`${newImgPath}`}  width= {750} height = {750} className="rounded-md"/>)
 
     }
 
     function initialImgListSetup(){
-{/* <img onClick = {() => switchImg("./assets/bikes/b2.png")} src="./assets/bikes/b2.png" className = "mr-32 border-2 rounded-md border-slate-200" 
-style={{backgroundSize: "scale-down", aspectRatio: ""}}/> */}
 
         const imgs = imgsuffixs.map((suffix, index) => <img onClick={() => switchMainImg(`/${imgpath}/${suffix}`)} src = {`/${imgpath}/${suffix}`} alt={suffix} id = {index}
         className = "mr-32 border-2 rounded-md border-slate-200"
@@ -153,16 +129,7 @@ style={{backgroundSize: "scale-down", aspectRatio: ""}}/> */}
 
                     {/* IMG OPTIONS */}
                     <section className="flex mt-32 overflow-scroll h-144 border-p">
-                        {/* <div className="flex items-center mr-32 border-2 rounded-md border-slate-200">
-                            <iconify-icon icon="teenyicons:360-outline" width= {96} height={96}></iconify-icon>
-                        </div> */}
-                        {/* <img onClick = {() => switchImg("./assets/bikes/b2.png")} src="./assets/bikes/b2.png" className = "mr-32 border-2 rounded-md border-slate-200" style={{backgroundSize: "scale-down", aspectRatio: ""}}/>
-                        <img onClick = {() => switchImg("./assets/bikes/b1.png")} src="./assets/bikes/b1.png" className = "mr-32 border-2 rounded-md border-slate-200" style={{backgroundSize: "scale-down", aspectRatio: ""}}/>
-                        <img src={`../${imgpath}`} className = "mr-32 border-2 rounded-md border-slate-200" style={{backgroundSize: "scale-down", aspectRatio: ""}}/>
-                        <img src="../assets/bikes/b1.png" className = "mr-32 border-2 rounded-md border-slate-200" style={{backgroundSize: "scale-down", aspectRatio: ""}}/>
-                        <img src="../assets/bikes/b1.png" className = "mr-32 border-2 rounded-md border-slate-200" style={{backgroundSize: "scale-down", aspectRatio: ""}}/> */}
-                        {imgList}
-
+                       {imgList}
                     </section>
                 </div>
                 {/* EMPTY MIDDLE */}

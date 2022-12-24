@@ -1,21 +1,17 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import Header from './components/Header'
-import Hero from './components/hero/Hero'
-import Footer from './components/Footer'
-import Browse from './components/browse/Browse'
-import ProductCard from './components/ProductCard'
+import clientPromise from "../../lib/mongodb";
+import ProductCard from "./ProductCard";
+import Header from "./Header";
+import Hero from "./hero/Hero";
+import Footer from "./Footer";
 
-import RefineSearch from "./components/RefineSearch"
-import { useEffect } from 'react'
-
-import clientPromise from "../lib/mongodb";
+const ObjectId = require('mongodb').ObjectId
 
 export default function index({newProducts}) {
 
   // console.log(products)
-  const mappedProductData = newProducts.map((product, index) => {
+  let mappedProductData
+  if (newProducts.length < 1) mappedProductData = "no items found, please try using the keywords: 'Bicycle', 'Bike', 'Cycle', 'Clothings', 'Clothes', 'Gloves', 'Helmet', 'Jacket', 'Mountain', 'Road'"
+  else mappedProductData = newProducts.map((product, index) => {
 
     return (
      <ProductCard 
@@ -32,19 +28,16 @@ export default function index({newProducts}) {
         imgpath = {product.imgPath}
         bestseller = {product.bestSeller}
         key = {index}
-        dirLevel = "."
+        dirLevel = ".."
       />
     )
 })
-
-// console.log(mappedProductData)
-
     
   return (
     <>
 
-      <Header dirLevel= "."/>
-      <Hero/>
+      <Header/>
+      {/* <Hero/> */}
       {/* <RefineSearch/> */}
     
       {/* <div className='flex flex-wrap md:grid  md:grid-cols-4  md:grid-rows-[600px] gap-16 mx-64'>
@@ -66,22 +59,16 @@ export default function index({newProducts}) {
 }
 
 export async function getServerSideProps(context) {
-//   let res = await fetch("http://localhost:3000/api/fetchProducts", {
-//     method: "GET",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   });
 
-//  let products = await res.json();
-//  console.log(products)
+  let ids
 
-console.log(context.query)
+  if (typeof(context.query.ids) !== "object") ids = [ObjectId(context.query.ids)]
+  else ids = context.query.ids.map(id => ObjectId(id))
 
-const client = await clientPromise;
+  const client = await clientPromise;
 
   const db = client.db("bcomm");
-  const products = await db.collection("products").find({}).toArray();
+  const products = await db.collection("products").find({_id: {$in : ids}}).toArray();
 
   const newProducts = products.map(product => {
     return {
@@ -90,7 +77,6 @@ const client = await clientPromise;
     }
   })
 
-  // console.log(`length of new newProducts is ${newProducts.length}`)
   return {
     props: { newProducts },
   };

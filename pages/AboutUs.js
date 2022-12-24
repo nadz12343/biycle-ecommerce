@@ -3,7 +3,7 @@ import Header from "./components/Header"
 export default function AboutUs(){
     return(
         <>
-                <Header/>
+                <Header dirLevel={"."}/>
                 <div className="h-[fit]" style={{backgroundImage: "url('../assets/bg/hero/hero.jpg')", backgroundSize:"cover"}}>
                     <div className="h-full bg-overlay-opacity">
                         <h1 className="py-64 pl-128">About Us</h1>
