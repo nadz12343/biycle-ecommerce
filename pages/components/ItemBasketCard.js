@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react"
 import Image from "next/image"
-export default function ItemBasketCard({imgPath, name, }){
+export default function ItemBasketCard({imgPath, name, key }){
 
 
     const originalPrice = 324.99
@@ -27,7 +27,7 @@ export default function ItemBasketCard({imgPath, name, }){
     }
 
     return (
-        <div className="flex flex-wrap w-full mb-48 bg-white border-b-2 border-grey-400">
+        <div className="flex flex-wrap w-full mb-48 bg-white border-b-2 border-grey-400" id = {key}>
             {/* <img src = "./assets/bicycles/mountains/carrera/1.jpeg" className="w-[75px] height-[75px] pr-32"></img> */}
             <Image src = "/assets/bicycles/mountains/carrera/1.jpeg" width={200} height={200} className=""></Image>
 

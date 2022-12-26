@@ -18,8 +18,7 @@ const val = useContext(BasketContextProvider, BasketContextConsumer)
                 <h1 className="pb-32 text-black text-h1s md:text-h1 h-fit">Basket</h1>
 
                 <div className="overflow-scroll">
-                {context.basket.map((item, index) => { console.log(item)
-                return <ItemBasketCard key = {index}/>})}
+                {context.basket.map((item, index) => <ItemBasketCard key = {index}/>)}
                 </div>
                 {/* {context.basket.map(item => <p className="pb-16">{item}</p>)} */}
 
