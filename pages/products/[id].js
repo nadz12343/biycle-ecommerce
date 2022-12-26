@@ -7,6 +7,8 @@ import Image from "next/image"
 
 import { useState, useEffect } from "react"
 import {useRouter} from "next/router"
+
+import { BasketContextProvider,BasketContextConsumer } from "../components/contexts/BasketContext";
 export const getStaticPaths = async () => {
 
 
@@ -69,25 +71,35 @@ export const getStaticProps = async (context) => {
 export default function W({product}){
 
     return (
-        <ProductViewer 
-        id = {product._id}
-        name = {product.name}
-        category = {product.category}
-        type = {product.type}
-        brand = {product.brand}
-        price = {product.price}
-        rating = {product.rating}
-        imgpath = {product.imgPath}
-        bestseller = {product.bestSeller}
-        desc = {product.desc}
-        imgsuffixs = {product.imgSuffix}
-        relatedproducts = {product.relatedProducts}
-        key = {product._id}/>
+        <BasketContextProvider>
+            <BasketContextConsumer>
+                {context => 
+                
+            (<ProductViewer 
+            id = {product._id}
+            name = {product.name}
+            category = {product.category}
+            type = {product.type}
+            brand = {product.brand}
+            price = {product.price}
+            rating = {product.rating}
+            imgpath = {product.imgPath}
+            bestseller = {product.bestSeller}
+            desc = {product.desc}
+            imgsuffixs = {product.imgSuffix}
+            relatedproducts = {product.relatedProducts}
+            key = {product._id}
+            addToBasket = {context.setBasket}/>)
+            }
+
+
+            </BasketContextConsumer>
+        </BasketContextProvider>
     )
 }
 
 
- function ProductViewer({id, name, category, type, brand, price, rating, imgpath, bestseller, desc, imgsuffixs, relatedproducts}){
+ function ProductViewer({id, name, category, type, brand, price, rating, imgpath, bestseller, desc, imgsuffixs, relatedproducts, addToBasket}){
 
     const [mainImg, setMainImg] = useState(<Image src={`/${imgpath}/${imgsuffixs[0]}`} width= {750} height = {750} className="rounded-md"/>)
 
@@ -116,7 +128,7 @@ export default function W({product}){
  
     return (
         <>
-            <Header/>
+            <Header dirLevel={".."}/>
 
             <div className="grid grid-cols-[60%_auto] gap-32 m-64">
                 
@@ -173,7 +185,7 @@ export default function W({product}){
                         </select>
                     </label>
 
-                    <button className= "px-32 py-16 mt-32 mb-32 ml-32 font-bold rounded-full bg-gradient-to-r from-primary to-secondary text-text-white text-h6 w-fit">
+                    <button className= "px-32 py-16 mt-32 mb-32 ml-32 font-bold rounded-full bg-gradient-to-r from-primary to-secondary text-text-white text-h6 w-fit" onClick={() => addToBasket("apollo")}>
                         Add to basket
                     </button>
                     </div>

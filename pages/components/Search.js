@@ -17,7 +17,6 @@ export default function Search({dirLevel}){
         })
     }
 
-    console.log(dirLevel)
     const [currentSearch, setCurrentSearch] = useState("")
 
     return (

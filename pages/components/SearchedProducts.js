@@ -36,7 +36,7 @@ export default function index({newProducts}) {
   return (
     <>
 
-      <Header/>
+      <Header dirLevel={".."}/>
       {/* <Hero/> */}
       {/* <RefineSearch/> */}
     

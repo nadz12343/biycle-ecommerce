@@ -8,6 +8,8 @@ import Browse from './components/browse/Browse'
 import ProductCard from './components/ProductCard'
 
 import Ads from './components/Ads'
+
+import { BasketContextConsumer, BasketContextProvider } from './components/contexts/BasketContext'
 export default function index() {
 
 
@@ -15,7 +17,7 @@ export default function index() {
   return (
     <>
 
-  <Header dirLevel="."/>
+    <Header dirLevel="."/>
     <Hero/>
     <Ads/>
 

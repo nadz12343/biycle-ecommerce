@@ -12,12 +12,11 @@ export default function AboutUs(){
 
             <section className="flex flex-col m-128">
                 <h2 className="mb-32 text-black">Our Story</h2>
-                <p>I am a highly organised and motivated professional Fashion Designer with a wealth of experience in a range of 
-                    photographic styles and services. Just run your Fashion Store which will be a reflection of you a sexy and confident woman 
-                    that shines with her unique style. Our goal is to make fashion as easy possible. We bring you the best of glam and sexy 
-                    clothes while keeping in mind that high quality things arent always too expensive. Our goal is to make fashion as easy as 
-                    possible, that is why we add carefully selected products on a daily basis, and this is essential for us. This is how you keep 
-                    up with the times in style! We ship worldwide & space!
+                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of 
+                    classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a 
+                    Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin 
+                    words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical 
+                    literature, discovered the undoubtable source.
                 </p>
                 <button className="self-start mt-32">Read more about our story</button>
             </section>

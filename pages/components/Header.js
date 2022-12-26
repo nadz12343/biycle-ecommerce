@@ -4,6 +4,7 @@ import { useState } from "react"
 
 import Basket from "./Basket"
 import Search from "./Search"
+import { BasketContextProvider } from "./contexts/BasketContext"
 export default function Header({dirLevel}){
 
     const [showMobileMenu, setShowMobileMenu] = useState(false)
@@ -19,6 +20,8 @@ export default function Header({dirLevel}){
                 <Link href = "/" onClick={() => setShowMobileMenu(showMobileMenu => !showMobileMenu)}><p className="font-regular text-h3 text-text-black">Home</p></Link>
                 <Link href = "/AboutUs" onClick={() => setShowMobileMenu(showMobileMenu => !showMobileMenu)}><p className="font-regular text-h3 text-text-black">About Us</p></Link>
                 <Link href = "/Products" onClick={() => setShowMobileMenu(showMobileMenu => !showMobileMenu)}><p className="font-regular text-h3 text-text-black">Products</p></Link>
+                <img className = 'w-8 h-8 mx-16 md:w-32 md:h-32' src={`${dirLevel}/assets/icons/basket.png`} alt="" onClick={() => setShowBasket(showBasket => !showBasket)}/>    
+
             </div>        
         </nav>
     )
@@ -58,7 +61,11 @@ export default function Header({dirLevel}){
             </section>
         </nav>
 
-        {showMobileMenu ? mobileMenuOn: mobileMenuOff}
+        <BasketContextProvider>
+            {showMobileMenu ? mobileMenuOn: mobileMenuOff}
+            {showBasket && <Basket/>}
+        </BasketContextProvider>
+
     </header>
    
     )
