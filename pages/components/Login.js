@@ -35,48 +35,67 @@ export default function Login({setUserDetails}) {
         })
     }
 
-    async function tryLogin(loginData){
+    // async function tryLogin(loginData){
 
+    //     fetch("/api/login", {
+    //         method: "POST",
+    //         // headers: {
+    //         //     'Set-Cookie': "loggedIn=true"
+    //         // },
+    //         body: JSON.stringify(loginData)
+    //     },
+    //     ).then(res => {
+    //         if (res.status === 200) {
+    //             document.cookie = "isLoggedIn=true"
+    //             // console.log(document.cookie)
+    //             return res.json()
+    //         }
+    //         else {
+    //             // console.log(document.cookie)
+    //             return null
+    //         }
+    //     }).then(data => {
+    //         if (data !== null) {
+    //             // console.log(data)
+    //             window.localStorage.setItem('isLoggedIn', true)
+    //             // console.log(window.localStorage)
+    //             window.localStorage.setItem('id', data.user[0]._id)
+    //             window.localStorage.setItem('email', data.user[0].email)
+    //             window.localStorage.setItem('firstname', data.user[0].firstname)
+    //             window.localStorage.setItem('surname', data.user[0].surname)
+
+    //             router.push({
+    //                 pathname: `/Account/[id]`,
+    //                 query: {
+    //                     id: data.user[0]._id,
+    //                     email: data.user[0].email,
+    //                     firstname: data.user[0].firstname,
+    //                     surname: data.user[0].surname,
+    
+    //                 }
+    //         })
+    //         } else {
+    //             console.log("user failed to login")
+    //         }
+
+    //     })
+    // }
+
+
+    async function tryLogin(loginData){
         fetch("/api/login", {
             method: "POST",
-            // headers: {
-            //     'Set-Cookie': "loggedIn=true"
-            // },
             body: JSON.stringify(loginData)
-        },
-        ).then(res => {
-            if (res.status === 200) {
-                document.cookie = "isLoggedIn=true"
-                // console.log(document.cookie)
-                return res.json()
-            }
-            else {
-                // console.log(document.cookie)
-                return null
-            }
-        }).then(data => {
-            if (data !== null) {
-                // console.log(data)
-                window.localStorage.setItem('isLoggedIn', true)
-                // console.log(window.localStorage)
-                window.localStorage.setItem('id', data.user[0]._id)
-                window.localStorage.setItem('email', data.user[0].email)
-                window.localStorage.setItem('firstname', data.user[0].firstname)
-                window.localStorage.setItem('surname', data.user[0].surname)
-
-                router.push({
-                    pathname: `/Account/[id]`,
-                    query: {
-                        id: data.user[0]._id,
-                        email: data.user[0].email,
-                        firstname: data.user[0].firstname,
-                        surname: data.user[0].surname,
-    
-                    }
+        }
+        ).then(res => 
+            {//   console.log(res.headers.get("Set-Cookie"))
+               return res.status === 200 ? res.json() : null
             })
-            } else {
-                console.log("user failed to login")
-            }
+        .then(data => {
+             data !== null ? router.push(`/Account/${data.user[0]._id}`): console.log("SF")
+            // data !== null ? router.push(`/Account/${data.user[0]._id}`, {
+            //     ...data.user[0]
+            // }): console.log("SF")
 
         })
     }

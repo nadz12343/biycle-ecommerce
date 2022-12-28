@@ -6,9 +6,7 @@ import Footer from "../components/Footer"
 import Image from "next/image"
 
 import { useState, useEffect } from "react"
-import {useRouter} from "next/router"
 
-import { BasketContextProvider,BasketContextConsumer } from "../components/contexts/BasketContext";
 export const getStaticPaths = async () => {
 
 
@@ -71,11 +69,8 @@ export const getStaticProps = async (context) => {
 export default function W({product}){
 
     return (
-        <BasketContextProvider>
-            <BasketContextConsumer>
-                {context => 
-                
-            (<ProductViewer 
+
+            <ProductViewer 
             id = {product._id}
             name = {product.name}
             category = {product.category}
@@ -88,18 +83,14 @@ export default function W({product}){
             desc = {product.desc}
             imgsuffixs = {product.imgSuffix}
             relatedproducts = {product.relatedProducts}
-            key = {product._id}
-            addToBasket = {context.setBasket}/>)
-            }
+            key = {product._id} />
+            
 
-
-            </BasketContextConsumer>
-        </BasketContextProvider>
     )
 }
 
 
- function ProductViewer({id, name, category, type, brand, price, rating, imgpath, bestseller, desc, imgsuffixs, relatedproducts, addToBasket}){
+ function ProductViewer({id, name, category, type, brand, price, rating, imgpath, bestseller, desc, imgsuffixs, relatedproducts}){
 
     const [mainImg, setMainImg] = useState(<Image src={`/${imgpath}/${imgsuffixs[0]}`} width= {750} height = {750} className="rounded-md"/>)
 
@@ -124,6 +115,13 @@ export default function W({product}){
     useEffect(() => {
         setImgList(initialImgListSetup())
     }, [])
+
+    function addToBasket() {
+        fetch(`/api/addItemToBasket/`, {
+            method: "POST",
+            body: JSON.stringify({name, imgPath: imgpath, price, quantity: 1})
+        }).then(res => res.status === 200 ? alert('item has been added to the basket'): alert('please login first'))
+    }
      
  
     return (

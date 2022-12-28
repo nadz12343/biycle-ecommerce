@@ -3,12 +3,14 @@ import Header from '../components/Header'
 import Basket from '../components/Basket'
 import {useRouter} from 'next/router'
 import { useState } from 'react'
+import clientPromise from "../../lib/mongodb";
+
 export default function Account({id, email, firstname, surname}) {
 
     const router = useRouter()
 
     function signOut(){
-      window.localStorage.setItem("isLoggedIn", false)
+      fetch("/api/signOut").then(res => res.status === 200 && console.log("signout"))
       router.push("/LoginSignUp")
     }
 
@@ -37,6 +39,9 @@ export default function Account({id, email, firstname, surname}) {
           }
       })
   }  
+
+
+  //need useeffect for checking if the cookie has expired
 
 
     const [newDetails, setNewDetails] = useState({id, email, firstname, surname})
@@ -80,14 +85,29 @@ export default function Account({id, email, firstname, surname}) {
 
 export async function getServerSideProps(context) {
 
+  const id = context.params.id
 
-    return {
-      props: {
-        id: context.params.id,
-        email: context.query.email,
-        firstname:context.query.firstname,
-        surname: context.query.surname,
-      }
+
+  const {ObjectId} = require('mongodb'); // or ObjectID 
+  const fs = require('fs')
+
+  const client = await clientPromise;
+  
+  const db = client.db("bcomm");
+  
+  let o_id = new ObjectId(id);   // id as a string is passed
+
+  const user = await db.collection("users").find({_id: o_id}).toArray();
+
+  // console.log(`WITHIN THE ACOCUNT SERVERSIDE: ${user}`)
+  // console.log(user[0])
+  return {
+    props: {
+      id: user[0]._id.toString(),
+      email: user[0].email,
+      firstname: user[0].firstname,
+      surname: user[0].surname,
     }
+  }
 
   }

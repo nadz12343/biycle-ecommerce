@@ -1,16 +1,19 @@
 
 import Link from "next/link"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import Basket from "./Basket"
 import Search from "./Search"
-import { BasketContextProvider } from "./contexts/BasketContext"
+import {useRouter}  from "next/router"
 export default function Header({dirLevel}){
 
     const [showMobileMenu, setShowMobileMenu] = useState(false)
 
     const [showBasket, setShowBasket] = useState(false)
 
+    const [sess_id, setSess_id] = useState(null)
+
+    const router =  useRouter()
     const mobileMenuOn= (
         <nav className="flex flex-col md:hidden h-[100vh] ">
             <button className="self-start ml-auto border-b-2 border-slate-700" onClick={() => setShowMobileMenu(showMobileMenu => !showMobileMenu)}>
@@ -25,6 +28,20 @@ export default function Header({dirLevel}){
             </div>        
         </nav>
     )
+
+    useEffect(() => {
+        fetch("/api/keepLoggedIn").then(res => {
+            console.log(res.status)
+            return res.json()
+        }).then(data => {
+            console.log(`in the useeffect ${data}`)
+            console.log(data)
+            if (data.session_id === null) console.log("JS")
+            else {
+                setSess_id(`${data.session_id}`)
+            }
+        })
+    })
 
     const mobileMenuOff = (
         <nav className="flex flex-col md:hidden">
@@ -54,17 +71,15 @@ export default function Header({dirLevel}){
             </section>
 
             <section className="flex">
-                    <Link href = "/LoginSignUp">
+                    <Link href = {sess_id === null ? `/LoginSignUp` : `/Account/${sess_id}`}>
                         <img className = 'w-8 h-8 mx-16 md:w-32 md:h-32' src={`${dirLevel}/assets/icons/account.png`} alt=""/>
                     </Link>
-                        <img className = 'w-8 h-8 mx-16 md:w-32 md:h-32' src={`${dirLevel}/assets/icons/basket.png`} alt="" onClick={() => setShowBasket(showBasket => !showBasket)}/>    
+                        <img className = 'w-8 h-8 mx-16 cursor-pointer md:w-32 md:h-32' src={`${dirLevel}/assets/icons/basket.png`} alt="" onClick={() => setShowBasket(showBasket => !showBasket)}/>    
             </section>
         </nav>
 
-        <BasketContextProvider>
             {showMobileMenu ? mobileMenuOn: mobileMenuOff}
-            {showBasket && <Basket/>}
-        </BasketContextProvider>
+            {showBasket && <Basket setShowBasket = {() => setShowBasket(false)}/>}
 
     </header>
    

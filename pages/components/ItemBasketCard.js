@@ -1,18 +1,18 @@
 
 import { useEffect, useState } from "react"
 import Image from "next/image"
-export default function ItemBasketCard({imgPath, name, key }){
+export default function ItemBasketCard({name, imgPath, price, quantity, key }){
 
 
     const originalPrice = 324.99
-    const [quantity, setQuantity] = useState(1)
-    const [price, setPrice] = useState(originalPrice)
+    // const [quantity, setQuantity] = useState(1)
+    // const [price, setPrice] = useState(originalPrice)
  
 
-    useEffect(() => {
-        setPrice(price => originalPrice*quantity)
+    // useEffect(() => {
+    //     setPrice(price => originalPrice*quantity)
 
-    },[quantity])
+    // },[quantity])
 
     function increaseQuantity(){
         if (quantity <3) setQuantity(quantity => quantity + 1)
@@ -27,11 +27,13 @@ export default function ItemBasketCard({imgPath, name, key }){
     }
 
     return (
-        <div className="flex flex-wrap w-full mb-48 bg-white border-b-2 border-grey-400" id = {key}>
+        <div className="flex flex-wrap w-full mb-48 bg-white border-b-2 h-fit border-grey-400" id = {key}>
             {/* <img src = "./assets/bicycles/mountains/carrera/1.jpeg" className="w-[75px] height-[75px] pr-32"></img> */}
-            <Image src = "/assets/bicycles/mountains/carrera/1.jpeg" width={200} height={200} className=""></Image>
+            <div className="w-[40%] relative h-full">
+                <Image src = {`/${imgPath}/1.jpeg`} width= '100' height={100} className="" style={{objectFit: 'contain'}}></Image>
+            </div>
 
-            <h4 className="pt-16 pl-16 text-h6s">Carrera bicycle</h4>
+            <h4 className="pt-16 pl-16 text-h6s">{name}</h4>
 
             <div className="pt-16 ml-auto mr-32">
                 <p className="font-bold text-ps">£{price}</p>

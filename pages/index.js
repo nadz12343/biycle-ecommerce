@@ -9,7 +9,6 @@ import ProductCard from './components/ProductCard'
 
 import Ads from './components/Ads'
 
-import { BasketContextConsumer, BasketContextProvider } from './components/contexts/BasketContext'
 export default function index() {
 
 

@@ -1,26 +1,33 @@
 
-import {BasketContextProvider,BasketContextConsumer} from "./contexts/BasketContext"
-import { useContext } from "react"
 import ItemBasketCard from "./ItemBasketCard"
-export default function Basket(){
+import { useEffect, useState } from "react"
+export default function Basket({setShowBasket}){
 
-    
-const val = useContext(BasketContextProvider, BasketContextConsumer)
+    const [rawBasket, setRawBasket] = useState(null)
 
+    const [userId, setUserId] = useState()
 
+    useEffect(() => {
+
+        fetch("/api/fetchUserBasket").then(res => res.status === 200 ? res.json() : null).then(data => {
+            setRawBasket(data)
+        })
+
+        
+    }, [])
 
     return(
 
-        <BasketContextConsumer>
+            <div className="text-black w-full absolute top-0 left-0 lg:left-auto lg:right-0 h-[100vh] lg:w-[40%] bg-white flex flex-col">
 
-            {context => (
-             <div className="text-black w-full absolute top-0 left-0 lg:left-auto lg:right-0 h-[100vh] lg:w-[40%] bg-white flex flex-col">
-                <h1 className="pb-32 text-black text-h1s md:text-h1 h-fit">Basket</h1>
-
-                <div className="overflow-scroll">
-                {context.basket.map((item, index) => <ItemBasketCard key = {index}/>)}
+                <div className="flex flex-row justify-around">
+                <h1 className="text-black pb- 32 text-h1s md:text-h1 h-fit">Basket</h1>
+                <button className="" onClick={setShowBasket}>X</button>
                 </div>
-                {/* {context.basket.map(item => <p className="pb-16">{item}</p>)} */}
+
+                <div className="h-full overflow-scroll">
+                    {rawBasket !== null ? rawBasket.items.map((item, index) => <ItemBasketCard name = {item.name} imgPath = {item.imgPath} price = {item.price} quantity = {item.quantity}  key = {index}/>) : "please login to add items to basket"}
+                </div>
 
 
                 <div className="flex flex-row justify-around mt-auto border-2 border-grey-400">
@@ -29,7 +36,6 @@ const val = useContext(BasketContextProvider, BasketContextConsumer)
                 </div>
 
              </div>
-            )}            
-        </BasketContextConsumer>
+
     )
 }
