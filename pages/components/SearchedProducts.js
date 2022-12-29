@@ -39,12 +39,9 @@ export default function index({newProducts}) {
       <Header dirLevel={".."}/>
       {/* <Hero/> */}
       {/* <RefineSearch/> */}
-    
-      {/* <div className='flex flex-wrap md:grid  md:grid-cols-4  md:grid-rows-[600px] gap-16 mx-64'>
-        {mappedProductData}
-      </div> */}
 
-      <div className='flex flex-wrap justify-center w-full'>
+
+      <div className='flex flex-wrap justify-center w-full '>
         {mappedProductData}
       </div>
 
@@ -52,7 +49,7 @@ export default function index({newProducts}) {
 
       {/* <!-- FOOTER --> */}
       <Footer/>
-      <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js" async></script>
+      {/* <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js" async></script> */}
 
     </>
   )

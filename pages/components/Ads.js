@@ -76,14 +76,11 @@ export default function Ads() {
                 <p class="w-1/2 mt-32 text-text-white text-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus doloraliquid 
                     ullam officia amet voluptates laboriosam suscipit eum est.
                 </p>
-                <button class= "px-32 py-16 mt-64 mb-auto font-bold text-black rounded-full bg-gradient-to-r from-primary to-secondary text-h6 w-fit">Explore Collections!</button>
+                <button class= "px-32 py-16 my-64 font-bold rounded-full bg-gradient-to-r from-primary to-secondary text-text-black text-h5s md:text-h6 w-fit">Explore Our Bicycles!</button>
 
 
-                <div class="flex justify-center w-full text-white">
-                    <iconify-icon icon="material-symbols:circle" class="mb-32"></iconify-icon>
-                    <iconify-icon icon="material-symbols:circle" class="px-32 mb-32"></iconify-icon>
-                    <iconify-icon icon="material-symbols:circle" class="mb-32"></iconify-icon>
-                </div>
+
+
             </div>
 
         </div>
@@ -101,14 +98,9 @@ export default function Ads() {
                     <p class="mt-32 text-text-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus doloraliquid 
                         ullam officia amet voluptates laboriosam suscipit eum est.
                     </p>
-                    <button class= "px-32 py-16 mt-64 mb-auto font-bold text-black rounded-full bg-gradient-to-r from-primary to-secondary text-h6 w-fit">Explore Collections!</button>
+                    <button class= "px-32 py-16 my-64 font-bold rounded-full bg-gradient-to-r from-primary to-secondary text-text-black text-h5s md:text-h6 w-fit">Check Our Clothes Out!</button>
 
 
-                    <div class="flex justify-center w-full text-white">
-                        <iconify-icon icon="material-symbols:circle" class="mb-32"></iconify-icon>
-                        <iconify-icon icon="material-symbols:circle" class="px-32 mb-32"></iconify-icon>
-                        <iconify-icon icon="material-symbols:circle" class="mb-32"></iconify-icon>
-                    </div>
                 </div>
 
             

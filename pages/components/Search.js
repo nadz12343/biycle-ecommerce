@@ -6,6 +6,8 @@ export default function Search({dirLevel}){
     const router = useRouter()
     async function trySearch(){
 
+        if (currentSearch === "") return
+
         fetch(`/api/searchProduct/${currentSearch}`, {
             method: "GET",
 
