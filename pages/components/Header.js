@@ -15,14 +15,28 @@ export default function Header({dirLevel}){
 
     const router =  useRouter()
     const mobileMenuOn= (
-        <nav className="flex flex-col md:hidden h-[100vh] ">
-            <button className="self-start ml-auto border-b-2 border-slate-700" onClick={() => setShowMobileMenu(showMobileMenu => !showMobileMenu)}>
-                Hover Menu
-            </button>
-            <div className="flex flex-col items-center justify-around w-full h-full">
-                <Link href = "/" onClick={() => setShowMobileMenu(showMobileMenu => !showMobileMenu)}><p className="font-regular text-h3 text-text-black">Home</p></Link>
-                <Link href = "/AboutUs" onClick={() => setShowMobileMenu(showMobileMenu => !showMobileMenu)}><p className="font-regular text-h3 text-text-black">About Us</p></Link>
-                <Link href = "/Products" onClick={() => setShowMobileMenu(showMobileMenu => !showMobileMenu)}><p className="font-regular text-h3 text-text-black">Products</p></Link>
+        <nav className="flex flex-col lg:hidden h-[100vh] ">
+            <div className="flex">
+                <button className="ml-16 mr-auto border-slate-700" onClick={() => setShowMobileMenu(showMobileMenu => !showMobileMenu)}>
+                    Hover Menu
+                </button>
+                <Link href = {sess_id === null ? `/LoginSignUp` : `/Account/${sess_id}`}>
+                        <img className = 'w-24 h-24 mx-16' src={`${dirLevel}/assets/icons/account.png`} alt=""/>
+                </Link>           
+                <img className = 'w-24 h-24 mx-16 cursor-pointer' src={`${dirLevel}/assets/icons/basket.png`} alt="" onClick={() => setShowBasket(showBasket => !showBasket)}/>    
+    
+            </div>
+
+            <div className="flex flex-col items-center justify-between w-full h-full">
+                <Link href = "/" onClick={() => setShowMobileMenu(showMobileMenu => !showMobileMenu)}>
+                    <p className="py-64 font-regular text-h1s text-text-black ">Home</p>
+                </Link>
+                <Link href = "/AboutUs" onClick={() => setShowMobileMenu(showMobileMenu => !showMobileMenu)}>
+                    <p className="py-64 font-regular text-h1s text-text-black s">About Us</p>
+                </Link>
+                <Link href = "/Products" onClick={() => setShowMobileMenu(showMobileMenu => !showMobileMenu)}>
+                <p className="py-64 font-regular text-h1s text-text-black ">Products</p>
+                </Link>
                 <img className = 'w-8 h-8 mx-16 md:w-32 md:h-32' src={`${dirLevel}/assets/icons/basket.png`} alt="" onClick={() => setShowBasket(showBasket => !showBasket)}/>    
 
             </div>        
@@ -44,19 +58,26 @@ export default function Header({dirLevel}){
     })
 
     const mobileMenuOff = (
-        <nav className="flex flex-col md:hidden">
-            <button className="self-start ml-auto" onClick={() => setShowMobileMenu(showMobileMenu => !showMobileMenu)}>
-                Hover Menu
-            </button>   
+        <nav className="flex flex-col lg:hidden">
+            <div className="flex">
+                <button className="ml-16 mr-auto border-slate-700" onClick={() => setShowMobileMenu(showMobileMenu => !showMobileMenu)}>
+                    Hover Menu
+                </button>
+                <Link href = {sess_id === null ? `/LoginSignUp` : `/Account/${sess_id}`}>
+                        <img className = 'w-24 h-24 mx-16' src={`${dirLevel}/assets/icons/account.png`} alt=""/>
+                </Link>     
+                <img className = 'w-24 h-24 mx-16 cursor-pointer' src={`${dirLevel}/assets/icons/basket.png`} alt="" onClick={() => setShowBasket(showBasket => !showBasket)}/>    
+      
+            </div>
         </nav>
     )
 
 
     return (
-        <header className="sticky top-0 z-10 w-full px-64 py-32 bg-white border-b-2 border-text-black">
+        <header className="sticky top-0 z-10 w-full px-32 py-16 bg-white border-b-2 md:px-64 md:py-32 border-text-black">
 
         {/* USED WHEN MD BREAKPOINT IS SATISFIED */}
-        <nav className="hidden md:flex md:items-center">
+        <nav className="hidden lg:flex lg:items-center">
             <section className="flex mr-auto">
                 <Link href = "/"><p className="px-64 font-regular text-text-black">Home</p></Link>
                 <Link href = "/AboutUs"><p className="pr-64 font-regular text-text-black">About Us</p></Link>
@@ -79,7 +100,7 @@ export default function Header({dirLevel}){
         </nav>
 
             {showMobileMenu ? mobileMenuOn: mobileMenuOff}
-            {showBasket && <Basket setShowBasket = {() => setShowBasket(false)}/>}
+            {showBasket && <Basket hideBasket={() => setShowBasket(false)}/>}
 
     </header>
    

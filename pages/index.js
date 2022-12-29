@@ -61,12 +61,12 @@ export default function index() {
 
     <div className="mt-256"style = {{backgroundImage: "url('./assets/bg/servicing-bg.jpg')", backgroundSize: "cover"}}>
 
-        <div className="h-full bg-overlay-opacity grid grid-rows-[h-fit_60%-auto] md:grid-cols-[60%_auto]">
-            <h3 className="px-40 pt-40 h-fit md:hidden text-h2s">Our simple bicycle servicing process</h3>
+        <div className="h-full bg-overlay-opacity grid grid-rows-[h-fit_60%-auto] lg:grid-cols-[60%_auto]">
+            <h3 className="px-40 pt-40 text-center h-fit lg:hidden text-h2s">Our simple bicycle servicing process</h3>
             <img src="./assets/bikes/b1.png" alt=""/>
 
                 <div className="flex flex-col items-center justify-center pt-32 text-center">
-                    <h3 className="hidden pb-64 h-fit md:block">Our simple bicycle servicing process</h3>
+                    <h3 className="hidden pb-64 h-fit lg:block">Our simple bicycle servicing process</h3>
 
                     <div className="grid items-center w-full grid-cols-2 grid-rows-2 gap-32 m-4 text-white steps">
                         <section>
@@ -110,27 +110,27 @@ export default function index() {
     </div>
 
     {/* <!-- WHY US SECTION --> */}
-    <h1 class="text-center text-text-black mt-128">Why choose us?</h1>
+    <h1 class="text-center text-h1s md:text-h1 text-text-black mt-72">Why choose us?</h1>
 
-    <div style = {{backgroundImage: "url('./assets/bg/why-us-bg.jpg')", backgroundSize: "cover"}} class="">
-        <section class="flex mt-64 justify-evenly bg-overlay-opacity">
+    <div style = {{backgroundImage: "url('./assets/bg/why-us-bg.jpg')", backgroundSize: "cover"}} className="">
+        <section className="flex bg-overlay-opacity">
             {/* <!-- <img src="./why-us/fast-delivery.png" alt="" class="text-gradient-to-r from-primary to-secondary"> --> */}
-                <div class="flex flex-col items-center justify-center">
-                    <img src="./assets/why-us/fast-delivery.svg" alt="" class="w-256 h-256"/>
-                    <h4 class="text-white">One day delivery</h4>
-                    <p class="text-text-color h-fit">You can always count on us for a fast speedy delivery</p>
+                <div className="flex flex-col items-center justify-center w-full my-24">
+                    <img src="./assets/why-us/fast-delivery.svg" alt="" className="w-64 h-64 md:w-128 md:h-128"/>
+                    <h4 className="text-white text-h5s md:text-h4">One day delivery</h4>
+                    <p className="text-center text-text-color h-fit text-ps md:text-p">You can always count on us for a fast speedy delivery</p>
+                </div>
+                
+                <div className="flex flex-col items-center justify-center w-full my-24">
+                    <img src="./assets/why-us/fast-delivery.svg" alt="" className="w-64 h-64 md:w-128 md:h-128"/>
+                    <h4 className="text-white text-h5s md:text-h4">One day delivery</h4>
+                    <p className="text-center text-text-color h-fit text-ps md:text-p">You can always count on us for a fast speedy delivery</p>
                 </div>
 
-                <div class="flex flex-col items-center justify-center">
-                    <img src="./assets/why-us/fast-delivery.svg" alt="" class="w-256 h-256"/>
-                    <h4 class="text-white">One day delivery</h4>
-                    <p class="text-text-color h-fit">You can always count on us for a fast speedy delivery</p>
-                </div>
-    
-                <div class="flex flex-col items-center justify-center">
-                    <img src="./assets/why-us/servicing.svg" alt="" class="w-256 h-256"/>
-                    <h4 class="text-white">One day delivery</h4>
-                    <p class="text-text-color h-fit">You can always count on us for a fast speedy delivery</p>
+                <div className="flex flex-col items-center justify-center w-full my-24">
+                    <img src="./assets/why-us/fast-delivery.svg" alt="" className="w-64 h-64 md:w-128 md:h-128"/>
+                    <h4 className="text-white text-h5s md:text-h4">One day delivery</h4>
+                    <p className="text-center text-text-color h-fit text-ps md:text-p">You can always count on us for a fast speedy delivery</p>
                 </div>
 
 
