@@ -19,15 +19,10 @@ export default function Ads() {
                 <p className="w-1/2 mt-32 text-text-white text-ps md:text-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus doloraliquid 
                     ullam officia amet voluptates laboriosam suscipit eum est.
                 </p>
-                {/* <button className= "px-32 py-16 mt-64 mb-auto font-bold text-black rounded-full bg-gradient-to-r from-primary to-secondary text-h4s w-fit">Explore Collections!</button> */}
-                <button class= "px-32 py-16 my-64 font-bold rounded-full bg-gradient-to-r from-primary to-secondary text-text-black text-h5s md:text-h6 w-fit">Explore Our Bicycles!</button>
-
-
-                {/* <div className="flex justify-center w-full text-white">
-                    <iconify-icon icon="material-symbols:circle" className="mb-32"></iconify-icon>
-                    <iconify-icon icon="material-symbols:circle" className="px-32 mb-32"></iconify-icon>
-                    <iconify-icon icon="material-symbols:circle" className="mb-32"></iconify-icon>
-                </div> */}
+                <button class= "px-32 py-16 my-64 font-bold rounded-full bg-gradient-to-r from-primary to-secondary text-text-black text-h5s md:text-h6 w-fit">
+                    Explore Our Bicycles! <img src = "/assets/icons/next.png" className="inline-block w-8 h-8"/>
+                </button>
+               
             </div>
 
         </div>
@@ -44,14 +39,10 @@ export default function Ads() {
                     <p class="mt-32 text-text-color text-ps md:text-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus doloraliquid 
                         ullam officia amet voluptates laboriosam suscipit eum est.
                     </p>
-                    <button class= "px-32 py-16 my-64 font-bold rounded-full bg-gradient-to-r from-primary to-secondary text-text-black text-h5s md:text-h6 w-fit">Check Our Clothes Out!</button>
+                    <button class= "px-32 py-16 my-64 font-bold rounded-full bg-gradient-to-r from-primary to-secondary text-text-black text-h5s md:text-h6 w-fit">
+                        Check Our Clothes Out! <img src = "/assets/icons/next.png" className="inline-block w-8 h-8"/>
+                    </button>
 
-{/* 
-                    <div class="flex justify-center w-full text-white">
-                        <iconify-icon icon="material-symbols:circle" class="mb-32"></iconify-icon>
-                        <iconify-icon icon="material-symbols:circle" class="px-32 mb-32"></iconify-icon>
-                        <iconify-icon icon="material-symbols:circle" class="mb-32"></iconify-icon>
-                    </div> */}
                 </div>
 
             
@@ -59,7 +50,7 @@ export default function Ads() {
     </div>
 
 
-    {/* USED WHEN MD BREAKPOINT HAS OCCURED */}
+    {/* USED WHEN lg BREAKPOINT HAS OCCURED */}
     
             {/* <!-- ADS --> */}
     <div class="hidden lg:grid grid-cols-[70%_30%] grid-rows-[60%_auto] mt-256 mb-128 mx-64 aspect-video">
@@ -76,7 +67,9 @@ export default function Ads() {
                 <p class="w-1/2 mt-32 text-text-white text-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus doloraliquid 
                     ullam officia amet voluptates laboriosam suscipit eum est.
                 </p>
-                <button class= "px-32 py-16 my-64 font-bold rounded-full bg-gradient-to-r from-primary to-secondary text-text-black text-h5s md:text-h6 w-fit">Explore Our Bicycles!</button>
+                <button class= "px-32 py-16 my-64 font-bold rounded-full bg-gradient-to-r from-primary to-secondary text-text-black text-h5s md:text-h6 w-fit">
+                    Explore Our Bicycles! <img src = "/assets/icons/next.png" className="inline-block w-24 h-24 ml-8"/>
+                </button>
 
 
 
@@ -98,7 +91,9 @@ export default function Ads() {
                     <p class="mt-32 text-text-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus doloraliquid 
                         ullam officia amet voluptates laboriosam suscipit eum est.
                     </p>
-                    <button class= "px-32 py-16 my-64 font-bold rounded-full bg-gradient-to-r from-primary to-secondary text-text-black text-h5s md:text-h6 w-fit">Check Our Clothes Out!</button>
+                    <button class= "px-32 py-16 my-64 font-bold rounded-full bg-gradient-to-r flex items-center from-primary to-secondary text-text-black text-h5s md:text-h6 w-fit">
+                        Check Our Clothes Out! <img src = "/assets/icons/next.png" className="inline-block w-32 h-32 ml-8"/>
+                    </button>
 
 
                 </div>

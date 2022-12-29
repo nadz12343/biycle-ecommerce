@@ -11,7 +11,9 @@ export default function HeroData({imgPath, header, shortMsg, buttonMsg, frameInd
 
                 <p class=" pt-64 md:w-[400px] md:text-p text-ps h-fit">{shortMsg}</p>
                 
-                <button class= "px-32 py-16 mt-64 font-bold rounded-full bg-gradient-to-r from-primary to-secondary text-text-black text-h5s md:text-h6 w-fit">{buttonMsg}</button>
+                <button class= "px-32 py-16 mt-64 font-bold rounded-full bg-gradient-to-r from-primary to-secondary text-text-black text-h5s md:text-h6 w-fit">
+                    {buttonMsg} <img src = "/assets/icons/next.png" className="inline-block w-16 h-16 md:w-24 md:h-24"/>
+                </button>
             </div>
 
             {/* USED WHEN MD BREAKPOINT IS SATISFIED */}

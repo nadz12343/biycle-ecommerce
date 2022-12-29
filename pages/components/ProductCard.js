@@ -22,7 +22,7 @@ export default function ProductCard({width, height, id, name, category, type, br
                     </div>
                     <Link href = {`/products/${id}`} className="flex justify-center" >
                         <button className= "px-16 py-8 my-32 font-bold rounded-full md:px-32 md:py-16 md:my-64 sm:text-h5s bg-gradient-to-r from-primary to-secondary text-text-white text-ps md:text-h6">
-                            More information
+                            More information <img src = "/assets/icons/next.png" className="inline-block w-8 h-8 md:w-24 md:h-24"/>
                         </button>
                     </Link>
                 </div>

@@ -150,7 +150,7 @@ export default function W({product}){
                 <div className="rounded-md " style = {{backgroundImage: "url(../assets/bg/bg-card.png)", backgroundSize: "cover",}}>
                 <div className = "flex flex-col h-full rounded-md bg-overlay-opacity">
             
-                    <h4 className="px-32 pt-32 text-white md:text-h4 text-h4s">{name}</h4>
+                    <h4 className="px-32 pt-32 text-white md:text-h4 text-h4s">{name[0].toUpperCase() + name.slice(1).toLowerCase()}</h4>
                     
                     <div className="pt-8 pl-32 text-primary text-h6s md:text-h6">&#9733;&#9733;&#9733;</div>
             
@@ -184,8 +184,9 @@ export default function W({product}){
                         </label>
                     </div>
             
-                    <button className= "px-16 py-8 mt-32 mb-32 ml-32 font-bold rounded-full md:px-32 md:py-16 bg-gradient-to-r from-primary to-secondary text-text-white text-h6s md:text-h6 w-fit" onClick={() => addToBasket("apollo")}>
-                        Add to basket
+                    <button className= "flex px-16 py-8 mt-32 mb-32 ml-32 rounded-full items-centerfont-bold md:px-32 md:py-16 bg-gradient-to-r from-primary to-secondary text-text-white text-h6s md:text-h6 w-fit" onClick={() => addToBasket("apollo")}>
+                        <p className="inline-block font-bold text-text-black">Add to basket</p>
+                        <img src = "/assets/icons/basket.png" className="inline-block w-24 h-24 ml-8"/>
                     </button>
                     </div>
                 </div>

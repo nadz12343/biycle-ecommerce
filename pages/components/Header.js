@@ -15,7 +15,7 @@ export default function Header({dirLevel}){
 
     const router =  useRouter()
     const mobileMenuOn= (
-        <nav className="flex flex-col mx-8 lg:hidden h-[100vh] ">
+        <nav className="flex flex-col mx-8 lg:hidden h-[100vh] sticky top-0 left-0">
             <div className="flex">
                 <button className="mr-auto border-slate-700" onClick={() => setShowMobileMenu(showMobileMenu => !showMobileMenu)}>
                     <img className="w-24 h-24" src = "/assets/icons/hamburger.png"/>
